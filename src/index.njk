@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Threvo SHOP
+---
+
+{# {% include "components/categories.njk" %} #}
+<div class="flex flex-col w-full px-4 md:px-12 pt-4 max-w-[1200px] mx-auto">
+    <p class="text-sm">Os produtos aqui são atualizados semanalmente. Para não perder nenhuma oportunidade, nos siga no <a target="_blank" href="https://x.com/threvoshop">X</a>!</p>
+</div>
+<div class="p-4 grid grid-cols-[repeat(auto-fit,280px)] place-items-center gap-x-2 gap-y-4 justify-center">
+{% for prod in collections.prods | reverse %}
+    <div class="flex flex-col min-w-full border border-gray-200 rounded-xs p-2">
+    <img class="h-32 self-center pb-2"
+        src="{{ prod.data.imageurl }}">
+    <p class="text-gray-400 text-sm">{{ prod.data.published }}</p>
+    <p class="text-base pb-2 h-[56px]">{{ prod.data.name }}</p>
+    {% if prod.data.ecommerce == "mercado livre" %}
+    <a class="inline-block py-2 px-6 bg-[#FFE600] text-black font-bold rounded-sm max-w-fit self-center"
+        href="{{ prod.data.affiliate }}" target="_blank"><p>Ver no Mercado Livre</p>
+    </a>
+    {% endif %}
+    {% if prod.data.ecommerce == "amazon" %}
+    <a class="inline-block py-2 px-6 bg-[#ff9900] text-black font-bold rounded-sm max-w-fit self-center"
+        href="{{ prod.data.affiliate }}" target="_blank"><p>Ver na Amazon</p>
+    </a>
+    {% endif %}
+    </div>
+    {{ prod.data.content | safe }}
+{% endfor %}
+</div>

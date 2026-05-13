@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Threvo BLOG
+---
+
+<div class="flex flex-col w-full px-4 md:px-12 py-4 max-w-[1200px] mx-auto">
+{% for post in collections.post | reverse %}
+    <p class="text-gray-400 text-sm">{{ post.data.published }} - <span class="text-gray-400 text-sm max-w-fit bg-gray-200 p-1 rounded-sm">{{ post.data.category }}</span></p>
+    <p><a href="{{ post.url }}"><p>{{ post.data.headline }}</a></p>
+    <br>
+{% endfor %}
+</div>

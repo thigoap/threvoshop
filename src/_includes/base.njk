@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{ metadata.author.name }}">
+    <meta name="description" content="{{ metadata.description }}">
+	<link rel="stylesheet" href="/static/styles.css">
+	<title>{{ metadata.title }}</title>
+</head>
+<body class="flex flex-col h-dvh ">
+    
+{% include "components/nav.njk" %}
+
+<main class="flex flex-col flex-1">
+    {{ content | safe }}
+</main>
+
+{% include "components/footer.njk" %}
+
+</body>
+</html>
